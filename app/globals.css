@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .input {
+        @apply outline-none border border-[#1E293B] rounded-lg h-12 placeholder:text-black pl-2 w-[80%]  lg:w-[70%] mx-auto
+    }
+}
