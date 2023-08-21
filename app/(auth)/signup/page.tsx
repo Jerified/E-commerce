@@ -8,7 +8,7 @@ import {useForm, SubmitHandler} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Link from 'next/link'
-import { schema, signInData } from '@/lib/schema'
+import { schema, signUpData } from '@/lib/schema'
 import { useRouter } from 'next/navigation'
 
 
@@ -21,11 +21,11 @@ const Signup = () => {
     setShowPassword(!showPassword)
   }
 
-  const {register, handleSubmit, formState:{errors}} = useForm<signInData>({
+  const {register, handleSubmit, formState:{errors}} = useForm<signUpData>({
     resolver: zodResolver(schema)
   })
 
-  const onSubmit:SubmitHandler<signInData> = async (data) => {
+  const onSubmit:SubmitHandler<signUpData> = async (data) => {
     const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
