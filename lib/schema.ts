@@ -1,8 +1,16 @@
 import * as z from 'zod'
 import validator from 'validator'
 
-
-// const phoneRegex = new RegExp(
+const envSchema = z.object({
+    GOOGLE_CLIENT_ID: z.string().nonempty(),
+    GOOGLE_CLIENT_SECRET: z.string().nonempty(),
+    NEXTAUTH_SECRET: z.string().nonempty(),
+    DATABASE_URL: z.string().nonempty(),
+    NEXTAUTH_URL: z.string().nonempty()
+})
+// console.log(envSchema.GO))0O)
+export const env = envSchema.safeParse(process.env)
+// const phoneRegex = new RegExp(g
 //     /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
 // )
 export const schema = z.object({

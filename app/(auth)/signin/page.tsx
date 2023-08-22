@@ -28,17 +28,18 @@ const Signin = () => {
 
     const onSubmit:SubmitHandler<signInData>  = async (data) => {
       const signInData = await signIn('credentials', {
-        email: data.email,
-        password: data.password,
+       ...data,
         redirect: false
+      }).then((callback) => {
+        console.log(callback?.error)
       })
-      console.log(signInData)
+      // console.log(signInData)
 
-      if(signInData?.error) {
-        console.log(signInData?.error)
-      } else {
-        router.push('/')
-      }
+      // if(signInData?.error) {
+      //   console.log(signInData?.error)
+      // } else {
+      //   router.push('/')
+      // }
     }    
   return (
     <form action="" className=' flex justify-center h-screen items-center ' onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +70,7 @@ const Signin = () => {
         Signup with Facebook
         </div>
       </button>
-      <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 " type='button'>
+      <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 " type='button' onClick={() => signIn("google")}>
         <FcGoogle className='text-2xl' />
         <div className=" mx-auto">
         Signup with Google

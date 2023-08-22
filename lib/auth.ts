@@ -1,9 +1,12 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
-import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./prisma";
 import { compare } from "bcrypt";
+import { Adapter } from "next-auth/adapters";
+import { env } from "./schema";
+import { PrismaClient } from "@prisma/client";
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -15,6 +18,10 @@ export const authOptions: NextAuthOptions = {
         signIn: '/signin'
     },
   providers: [
+   GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
+      clientSecret:process.env.GOOGLE_CLIENT_SECRET ?? ''
+   }),
     CredentialsProvider({
   
       name: "Credentials",
@@ -25,21 +32,21 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
          if(!credentials?.email || !credentials.password) {
-            return null
+            throw new Error('Please enter an email and password')
          }
 
          const existingUser = await prisma.user.findUnique({
             where: { email: credentials?.email}
          })
 
-         if (!existingUser) {
-            return null
+         if (!existingUser || !existingUser.password) {
+            throw new Error ('No user found')
          }
 
          const passwordMatch = await compare(credentials.password, existingUser.password)
 
          if (!passwordMatch) {
-            return null
+            throw new Error('Incorrect password')
          }
 
          return {

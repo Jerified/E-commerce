@@ -10,6 +10,7 @@ import * as z from 'zod'
 import Link from 'next/link'
 import { schema, signUpData } from '@/lib/schema'
 import { useRouter } from 'next/navigation'
+import { signIn } from "next-auth/react"
 
 
 const Signup = () => {
@@ -86,7 +87,7 @@ const Signup = () => {
           Signup with Facebook
           </div>
         </button>
-        <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 ">
+        <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 " type='button' onClick={() => signIn("google")}>
           <FcGoogle className='text-2xl' />
           <div className=" mx-auto">
           Signup with Google
