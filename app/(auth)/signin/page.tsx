@@ -27,13 +27,16 @@ const Signin = () => {
     })
 
     const onSubmit:SubmitHandler<signInData>  = async (data) => {
+      console.log(data)
       const signInData = await signIn('credentials', {
        ...data,
-        redirect: false
-      }).then((callback) => {
+        redirect: true,
+        callbackUrl: '/'
+      })
+      .then((callback) => {
         console.log(callback?.error)
       })
-      // console.log(signInData)
+      console.log(signInData)
 
       // if(signInData?.error) {
       //   console.log(signInData?.error)
@@ -60,7 +63,7 @@ const Signin = () => {
           <span className="error">{errors.password?.message}</span>
         )}
       </div>
-      <button type='submit' className="bg-[#94A3B8] w-[80%] lg:w-[70%] mx-auto h-12 rounded-md hover:bg-[#8599B6] transition duration-150 text-white  ">
+      <button type='submit' className="bg-[#94A3B8] w-[80%] lg:w-[70%] mx-auto h-12 rounded-md hover:bg-[#8599B6] transition duration-150 text-white">
         Login
       </button>
       <div className="mx-auto py-0 flex w-[80%] lg:w-[70%] items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400 font-semibold">Or</div>
