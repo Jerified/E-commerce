@@ -1,6 +1,19 @@
 import * as z from 'zod'
 import validator from 'validator'
 
+export const AddProductSchema = z.object({
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    price: z.number().positive(),
+    // discountPercentage: z.number().min(0).max(100),
+    rating: z.number().min(0).max(5),
+    stock: z.number().int().nonnegative(),
+    // brand: z.string().nonempty(),
+    category: z.string().nonempty(),
+    thumbnail: z.string().url(),
+    images: z.array(z.string().url()).optional().default([]),
+  })
+
 const envSchema = z.object({
     GOOGLE_CLIENT_ID: z.string().nonempty(),
     GOOGLE_CLIENT_SECRET: z.string().nonempty(),
@@ -29,3 +42,4 @@ export const signInSchema = z.object({
 
 export type signUpData = z.infer<typeof schema>
 export type signInData = z.infer<typeof signInSchema>
+export type AddProductData = z.infer<typeof AddProductSchema>

@@ -14,4 +14,8 @@ input:-webkit-autofill {
     .error {
         @apply mt-[-1.5rem] text-red-600 text-sm  w-[80%]  lg:w-[70%] mx-auto text-start
     }
+
+    .addProduct {
+        @apply w-full h-12 mb-3 rounded-md px-3
+    }
 }

@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from 'react-icons/ai'
-import {BiLogoFacebook} from 'react-icons/bi'
+import { BiLogoFacebook } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
-import {useForm, SubmitHandler} from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Link from 'next/link'
@@ -17,16 +17,16 @@ const Signup = () => {
 
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
-  
+
   const handleClickPassword = () => {
     setShowPassword(!showPassword)
   }
 
-  const {register, handleSubmit, formState:{errors}} = useForm<signUpData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<signUpData>({
     resolver: zodResolver(schema)
   })
 
-  const onSubmit:SubmitHandler<signUpData> = async (data) => {
+  const onSubmit: SubmitHandler<signUpData> = async (data) => {
     const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
@@ -37,7 +37,7 @@ const Signup = () => {
         email: data.email,
         password: data.password
       })
-      
+
     })
 
     if (response.ok) {
@@ -47,9 +47,9 @@ const Signup = () => {
     }
     console.log(data);
     console.log(response)
-    
+
   }
-  
+
   return (
     <form action="" className=' flex justify-center h-screen items-center' onSubmit={handleSubmit(onSubmit)}>
       <div className="bg-white rounded-md w-[80%] md:w-[60%] lg:w-[40%] text-center flex flex-col py-6 gap-7">
@@ -58,7 +58,7 @@ const Signup = () => {
         {errors?.username && (
           <span className="error">{errors.username?.message}</span>
         )}
-        <input type="email" id="email" className='input ' placeholder='Enter Your Email' {...register('email')}  />
+        <input type="email" id="email" className='input ' placeholder='Enter Your Email' {...register('email')} />
         {errors?.email && (
           <span className="error">{errors.email?.message}</span>
         )}
@@ -70,7 +70,7 @@ const Signup = () => {
           <input type={showPassword ? 'text' : 'password'} id="password" className='input relativ w-full mx-auto' placeholder='Enter Your Password' {...register('password')} />
           <button type="button" className=' absolute top-3 right-4 ' onClick={handleClickPassword}>
             {showPassword ?
-            <AiOutlineEye className='text-2xl '  /> : <AiOutlineEyeInvisible  className='text-2xl ' />
+              <AiOutlineEye className='text-2xl ' /> : <AiOutlineEyeInvisible className='text-2xl ' />
             }
           </button>
         </div>
@@ -84,13 +84,13 @@ const Signup = () => {
         <button className="bg-[#3D4B5F] w-[80%] lg:w-[70%] mx-auto h-12 rounded-md hover:bg-[#263141] transition duration-150 text-white flex justify-evenl items-center px-3  border-0">
           <BiLogoFacebook className='text-2xl' />
           <div className=" mx-auto">
-          Signup with Facebook
+            Signup with Facebook
           </div>
         </button>
         <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 " type='button' onClick={() => signIn("google")}>
           <FcGoogle className='text-2xl' />
           <div className=" mx-auto">
-          Signup with Google
+            Signup with Google
           </div>
         </button>
         <p className="underline">Already have an account? <Link href='/signin' className="text-blue-600 pl-2 hover:text-blue-800 active:text-blue-950">Login</Link></p>
