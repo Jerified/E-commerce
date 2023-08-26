@@ -13,67 +13,22 @@ import { AddProductData, AddProductSchema } from '@/lib/schema'
 import { addProduct } from '../action'
 
 export const metadata = {
-    title: "Add Product- Jerrizone"
+    title: "Add Product- Exclusive "
 }
-
-// const addProducts = async (formData: FormData) => {
-//     // "use server"
-
-//     // const session = await getServerSession(authOptions)
-
-//     // if (!session) {
-//     //     redirect('/signin?callbackUrl=/add-product')
-//     }
-
-//     const name = formData.get("name")?.toString()
-//     const description = formData.get("description")?.toString()
-//     const imageUrl = formData.get("imageUrl")?.toString()
-//     const price = Number(formData.get("price") || 0)
-
-//     console.log(name, description, imageUrl, price)
-
-//     if (!name || !description || !imageUrl || !price) {
-//         throw Error("Missing required fields")
-//     }
-
-//     await prisma.product.create({
-//         data: {
-//             name,
-//             description,
-//             image: imageUrl,
-//             price
-//         }
-//     })
-
-//     redirect('/')
-
-// }
 
 const Product =  () => {
     const { register, handleSubmit, formState: { errors } } = useForm<AddProductData>({
         resolver: zodResolver(AddProductSchema),
       })
-    //   const router = useRouter()
     
       const onSubmit: SubmitHandler<AddProductData> = async (data) => {
         
         try {
-            console.log(data);
             const product = await addProduct(data)
-            console.log(product)
-        //   const product = await prisma.product.create({
-        //     data
-        //   })
-        //   router.push(`/products/${product.id}`)
-        } catch (error) {
+              } catch (error) {
           console.error(error)
         }
       }
-    // const session = await getServerSession(authOptions)
-
-    // if (!session) {
-    //     redirect('/signin?callbackUrl=/add-product')
-    // }
     return (
         <div className='p-4 max-w-6xl mx-auto min-w-[300px]'>
             {/* <h1 className="text-2xl font-semibold flex justify-center mb-4">Add Product</h1> */}

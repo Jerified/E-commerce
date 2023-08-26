@@ -27,6 +27,7 @@ const Signup = () => {
   })
 
   const onSubmit: SubmitHandler<signUpData> = async (data) => {
+    console.log(data)
     const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
