@@ -5,7 +5,7 @@ import {PiShoppingCartLight} from "react-icons/pi"
 
 const Header = () => {
   return (
-    <header className='max-w-6xl mx-auto px-5'>
+    <header className='max-w-6xl mx-auto px-5 lg:px-0'>
         <div className="flex justify-between py-7 items-center ">
             {/* <img src={Logo} alt='logo' /> */}
             <h1 className="text-2xl font-semibold">Exclusive</h1>

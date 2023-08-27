@@ -7,7 +7,18 @@ import Banner from "./components/Home/Banner"
 // import Signup from './(auth)/signup/page'
 
 export default async function Home() {
+
+  const womenProducts = ["womens-dresses", "womens-shoes", "womens-watches", "womens-bag", "womens-jewellery", "womens-bags"]
+
+  const menProducts = ["mens-shirts", "mens-shoes", "mens-watches"]
+
   const session = await getServerSession(authOptions)
+  const data = await fetch('https://dummyjson.com/products'
+  // , {
+
+  //   cache: 'no-cache'
+  // }
+  )
 
   const res = await fetch('https://dummyjson.com/products/categories'
   // , {
@@ -21,13 +32,20 @@ export default async function Home() {
   }
 
   const products = await res.json()
-  // console.log(products)
+  const allProducts = await data.json()
+
+  const categories = products.filter((category) => !womenProducts.includes(category) && !menProducts.includes(category))
+  // console.log(cat)
+
+categories.unshift("Women Fashion", "Men Fashion")
+// console.log(cat)
+
   return (
     <main className="">
       {/* <Signup */}
-      <div className=" border- w-full">
-        <SideNav products={products} />
-        <Banner />
+      <div className="w-full flex">
+        <SideNav categories={categories} />
+        <Banner allProducts={allProducts} />
       </div>
       {/* products.map(product => (
         <h1>{product.title}</h1>
