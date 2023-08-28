@@ -16,9 +16,9 @@ const Banner = ({ allProducts }: any) => {
     setCurrentIndex(slideIndex)
   }
   return (
-    <section className="lg:w-[80%] p-6">
+    <section className="lg:w-[80%] p-6 w-full">
       <div className="bg-[#8EC1D6] rounded text-white">
-        <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[26rem] lg:py-8 lg:flex-row lg:items-center ">
+        <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[26rem] lg:py-8 md:flex-row md:items-center ">
           <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
 
             <div className="max-w-lg lg:mx-12 lg:order-2">
@@ -35,7 +35,7 @@ const Banner = ({ allProducts }: any) => {
           </div>
           
         </div>
-        <div className="flex justify-center order- mt-6 lg:mt-0 lg:space-x-3 pb-4 lg:flex-ro">
+        <div className="flex justify-center order- mt-6 lg:mt-0 lg:space-x-3 lg:py-4 pb-4 lg:flex-ro">
             <button className="w-3 h-3 mx-2 bg-blue-500 rounded-full lg:mx-0 focus:outline-none"></button>
             <button className="w-3 h-3 mx-2 bg-gray-300 rounded-full lg:mx-0 focus:outline-none hover:bg-blue-500"></button>
             <button className="w-3 h-3 mx-2 bg-gray-300 rounded-full lg:mx-0 focus:outline-none hover:bg-blue-500"></button>

@@ -20,6 +20,7 @@ export default function RootLayout({
       <body className={` ${inter.className}`} >
         <div className="border-b border-gray-400">
           <Header />
+          
         </div>
         <main className="max-w-6xl mx-auto">
         

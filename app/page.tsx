@@ -4,6 +4,10 @@ import Header from './components/Home/Header/page'
 // import { Header } from "./components/Home/Header"
 import SideNav from "./components/Home/SideNav"
 import Banner from "./components/Home/Banner"
+// import FlashSales from './components/Home/FlashSales'
+import dynamic from 'next/dynamic'
+
+const FlashSales = dynamic(() => import('./components/Home/FlashSales'), {ssr: false})
 // import Signup from './(auth)/signup/page'
 
 export default async function Home() {
@@ -35,10 +39,9 @@ export default async function Home() {
   const allProducts = await data.json()
 
   const categories = products.filter((category) => !womenProducts.includes(category) && !menProducts.includes(category))
-  // console.log(cat)
-
 categories.unshift("Women Fashion", "Men Fashion")
-// console.log(cat)
+
+
 
   return (
     <main className="">
@@ -47,6 +50,7 @@ categories.unshift("Women Fashion", "Men Fashion")
         <SideNav categories={categories} />
         <Banner allProducts={allProducts} />
       </div>
+      <FlashSales allProducts={allProducts} />
       {/* products.map(product => (
         <h1>{product.title}</h1>
       )) */}
