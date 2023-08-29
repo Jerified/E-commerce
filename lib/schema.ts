@@ -7,7 +7,7 @@ export const AddProductSchema = z.object({
     price: z.number().positive(),
     // discountPercentage: z.number().min(0).max(100),
     rating: z.number().min(0).max(5),
-    stock: z.number().int().nonnegative(),
+    // stock: z.number().int().nonnegative(),
     // brand: z.string().nonempty(),
     category: z.string().nonempty(),
     thumbnail: z.string().url(),

@@ -70,7 +70,7 @@ model Product {
   rating             Float
   // Stock              Int
   // brand              String
-  images             String[]
+  // images             String[] @default([])
   thumbnail          String
   category           String
   createdAt          DateTime   @default(now())

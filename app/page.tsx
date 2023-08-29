@@ -6,6 +6,7 @@ import SideNav from "./components/Home/SideNav"
 import Banner from "./components/Home/Banner"
 // import FlashSales from './components/Home/FlashSales'
 import dynamic from 'next/dynamic'
+import Categorylist from './components/Home/Categorylist'
 
 const FlashSales = dynamic(() => import('./components/Home/FlashSales'), {ssr: false})
 // import Signup from './(auth)/signup/page'
@@ -51,6 +52,7 @@ categories.unshift("Women Fashion", "Men Fashion")
         <Banner allProducts={allProducts} />
       </div>
       <FlashSales allProducts={allProducts} />
+      <Categorylist />
       {/* products.map(product => (
         <h1>{product.title}</h1>
       )) */}

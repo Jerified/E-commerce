@@ -100,7 +100,7 @@ const FlashSales = ({allProducts}: any) => {
     </div>
 ))}
 </div>
-<button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-5 hover:bg-blue-700">View All Products</button>
+<button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-3 hover:bg-blue-700">View All Products</button>
 
    
 
