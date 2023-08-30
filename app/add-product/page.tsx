@@ -13,7 +13,7 @@ import { AddProductData, AddProductSchema } from '@/lib/schema'
 import { addProduct } from '../action'
 
 export const metadata = {
-    title: "Add Product- Exclusive "
+    title: "Add Product-Exclusive"
 }
 
 const Product =  () => {
@@ -26,16 +26,16 @@ const Product =  () => {
         //   redirect("/signin?callbackUrl=/add-product");
         // }
       
-        console.log(formData);
+        // console.log(formData);
         
       
-        const title = formData.get("title")?.toString() || '';
-        const description = formData.get("description")?.toString() || '';
+        const title = formData.get("title")?.toString() ;
+        const description = formData.get("description")?.toString() ;
         const price = Number(formData.get("price") || 0);
         const rating = Number(formData.get("rating") || 0);
-        const category = formData.get("category")?.toString() || '';
-        const thumbnail = formData.get("thumbnail")?.toString() || '';
-        const images = formData.get("images") || ''
+        const category = formData.get("category")?.toString() ;
+        const thumbnail = formData.get("thumbnail")?.toString() ;
+        // const images = formData.get("images") || ''
       
         const data = {
           title,
@@ -44,8 +44,10 @@ const Product =  () => {
           rating,
           category,
           thumbnail,
-          images,
+        //   images,
         };
+
+        console.log(data)
         // const validData = AddProductSchema.parse(FormData);
         
         await prisma.product.create({

@@ -6,7 +6,7 @@ import { useState } from 'react'
 const Banner = ({ allProducts }: any) => {
 
 
-  const [currentIndex, setCurrentIndex] = useState(2)
+  const [currentIndex, setCurrentIndex] = useState(8)
   // console.log(allProducts)
 
   // const pro = allProducts.products[currentIndex]

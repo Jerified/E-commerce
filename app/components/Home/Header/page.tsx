@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../../../../public/Logo.svg'
 import Search from '../Search/page'
 import { PiShoppingCartLight } from "react-icons/pi"
+import Link from 'next/link'
 
 const Header = () => {
   return (
@@ -13,7 +14,9 @@ const Header = () => {
           <li>Home</li>
           <li>Contact</li>
           <li>About</li>
-          <li>Sign in</li>
+          <Link href={'/signin'}>
+            <li>Sign in</li>
+          </Link>
         </ul>
 
         <div className="gap-16 items-center hidden lg:flex">
