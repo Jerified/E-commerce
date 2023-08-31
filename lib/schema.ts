@@ -5,13 +5,13 @@ export const AddProductSchema = z.object({
     title: z.string().nonempty(),
     description: z.string().nonempty(),
     price: z.number().positive(),
-    // discountPercentage: z.number().min(0).max(100),
+    discountPercentage: z.number().min(0).max(100),
     rating: z.number().min(0).max(5),
     // stock: z.number().int().nonnegative(),
     // brand: z.string().nonempty(),
     category: z.string().nonempty(),
     thumbnail: z.string().url(),
-    images: z.array(z.string().url()).optional().default([]),
+    // images: z.array(z.string().url()).optional().default([]),
   })
 
 const envSchema = z.object({

@@ -16,26 +16,21 @@ export async function addProduct(formData: FormData) {
   console.log(formData);
   
 
-  const title = formData.get("title")?.toString() || '';
-  const description = formData.get("description")?.toString() || '';
-  const price = Number(formData.get("price") || 0);
-  const rating = Number(formData.get("rating") || 0);
-  const category = formData.get("category")?.toString() || '';
-  const thumbnail = formData.get("thumbnail")?.toString() || '';
-  const images = JSON.parse(formData.get("images").toString());
 
-  const data = {
-    title,
-    description,
-    price,
-    rating,
-    category,
-    thumbnail,
-    images,
-  };
-  // const validData = AddProductSchema.parse(FormData);
+  // const formData = {
+  //   title,
+  //   description,
+  //   price,
+  //   rating,
+  //   category,
+  //   thumbnail,
+  //   // images,
+  // };
+  const validData = AddProductSchema.parse(formData);
   
   await prisma.product.create({
-    data: data
+    data: validData
   });
+
+  redirect('/')
 }
