@@ -54,12 +54,12 @@ export default async function Home() {
   return (
     <main className="">
       {/* <Signup */}
-      <div className="w-full flex">
+      {/* <div className="w-full flex">
         <SideNav product={product} />
         <Banner allProducts={allProducts} />
       </div>
       <FlashSales allProducts={allProducts} />
-      <Categorylist />
+      <Categorylist /> */}
       {/* products.map(product => (
         <h1>{product.title}</h1>
       )) */}

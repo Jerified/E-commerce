@@ -61,14 +61,14 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 enum Category {
-  Phones @map("Phones")
-  Clothing @map("Clothing")
-  Electronics @map("Electronics")
-  Gaming @map("Gaming")
-  Smartwatch @map("Smartwatch")
-  Groceries @map("Groceries")
-  Computer @map("Computer")
-  Toys @map("Toys")
+  Phones 
+  Clothing
+  Electronics
+  Gaming 
+  Smartwatch 
+  Groceries
+  Computer 
+  Toys 
 }
 
 model Product {

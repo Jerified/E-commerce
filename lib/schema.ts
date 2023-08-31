@@ -1,5 +1,9 @@
 import * as z from 'zod'
 import validator from 'validator'
+import { Category } from '@prisma/client'
+
+
+// const Category = "Phones"
 
 export const AddProductSchema = z.object({
     title: z.string().nonempty(),
@@ -9,7 +13,7 @@ export const AddProductSchema = z.object({
     rating: z.number().min(0).max(5),
     // stock: z.number().int().nonnegative(),
     // brand: z.string().nonempty(),
-    category: z.string().nonempty(),
+    category: z.nativeEnum(Category),
     thumbnail: z.string().url(),
     // images: z.array(z.string().url()).optional().default([]),
   })
