@@ -17,7 +17,11 @@ export default async function Home() {
     orderBy: {createdAt: "desc"}
   })
 
-  console.log(product);
+  // const products = [...new Set(members.map((m) => [m.category, m]))]
+  // const products = new Set(Product)
+  // const product = Array.from
+
+  // console.log(products);
   
 
   // const womenProducts = ["womens-dresses", "womens-shoes", "womens-watches", "womens-bag", "womens-jewellery", "womens-bags"]
@@ -54,15 +58,17 @@ export default async function Home() {
   return (
     <main className="">
       {/* <Signup */}
-      {/* <div className="w-full flex">
-        <SideNav product={product} />
-        <Banner allProducts={allProducts} />
+       <div className="w-full flex">
+        <aside className="border-r border-gray-400 hidden lg:flex lg:flex-col w-[20%] capitalize  gap-2 pt-8">
+        {product.map(product => (
+            <SideNav product={product} key={product.id} />
+        ))}
+        </aside>
+        <Banner product={product} />
       </div>
-      <FlashSales allProducts={allProducts} />
-      <Categorylist /> */}
-      {/* products.map(product => (
-        <h1>{product.title}</h1>
-      )) */}
+      {/* <FlashSales allProducts={allProducts} /> */}
+      <Categorylist /> 
+      
       {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vero beatae blanditiis atque, esse nemo velit id, cupiditate excepturi corporis animi odit incidunt quam reiciendis sint sapiente aspernatur quia dolorum. */}
     </main>
   )

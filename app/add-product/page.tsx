@@ -70,6 +70,7 @@ const Product = () => {
                     {/* <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Category</label> */}
                     <select {...register("category")} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-12 px-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value='Clothing'>Clothing</option>
+                        <option value='Phones'>Phones</option>
                         <option value='Electronics'>Electronics</option>
                         <option value='Gaming'>Gaming</option>
                         <option value='Smartwatch'>Smartwatch</option>

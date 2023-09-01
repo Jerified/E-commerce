@@ -3,11 +3,12 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-const Banner = ({ allProducts }: any) => {
+const Banner = ({ product }: any) => {
 
+  // const product = allProducts
 
-  const [currentIndex, setCurrentIndex] = useState(8)
-  // console.log(allProducts)
+  const [currentIndex, setCurrentIndex] = useState(1)
+  console.log(product[0].thumbnail)
 
   // const pro = allProducts.products[currentIndex]
   // console.log(pro)
@@ -31,7 +32,7 @@ const Banner = ({ allProducts }: any) => {
           </div>
 
           <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
-            <Image className="object-contain w-full h-full max-w-2xl rounded-md" src={allProducts.products[currentIndex]?.thumbnail || "unable to load image"} alt={allProducts.products[currentIndex]?.title} width={800} height={800} priority />
+            <Image className="object-contain w-full h-full max-w-2xl rounded-md" src={product[currentIndex]?.thumbnail || "unable to load image"} alt={product[currentIndex]?.title} width={800} height={800} priority />
           </div>
           
         </div>

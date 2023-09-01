@@ -1,19 +1,26 @@
+import { Product } from '@prisma/client'
 import React from 'react'
 
-const SideNav = ({categories}) => {
-    // const categories = Object.keys(products)
-    // console.log(categories);
+type TProduct = {
+    product: Product
+}
+
+const SideNav = ({product}: TProduct) => {
+
+    const products = product.category
+    // const categories = [...products]
+    // console.log(product)
+    // const cat = new Set(categories)
+
+    // const arr = 
+
+    // const categories = Object.keys(product)
+    // console.log(product.category);     
     
   return (
-    <aside className='border-r border-gray-400 hidden lg:flex lg:flex-col w-[20%] capitalize  gap-2 pt-8'>
-        {
-            categories.map((category) => (
-                <ul key={category}>
-                    {category}
-                </ul>
-            ))
-        }
-    </aside>
+        <ul>
+            {product.category}
+        </ul>
   )
 }
 
