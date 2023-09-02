@@ -8,7 +8,7 @@ const Banner = ({ product }: any) => {
   // const product = allProducts
 
   const [currentIndex, setCurrentIndex] = useState(1)
-  console.log(product[0].thumbnail)
+  // console.log(product[0].thumbnail)
 
   // const pro = allProducts.products[currentIndex]
   // console.log(pro)
@@ -21,7 +21,6 @@ const Banner = ({ product }: any) => {
       <div className="bg-[#8EC1D6] rounded text-white">
         <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[26rem] lg:py-8 md:flex-row md:items-center ">
           <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
-
             <div className="max-w-lg lg:mx-12 lg:order-2">
               <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">The best Apple Watch apps</h1>
               {/* <p className="mt-4 text-gray-600 dark:text-gray-300">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quia asperiores alias vero magnam recusandae adipisci ad vitae laudantium quod rem voluptatem eos accusantium cumque.</p> */}

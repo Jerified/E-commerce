@@ -66,7 +66,7 @@ export default async function Home() {
         </aside>
         <Banner product={product} />
       </div>
-      {/* <FlashSales allProducts={allProducts} /> */}
+      <FlashSales product={product} />
       <Categorylist /> 
       
       {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vero beatae blanditiis atque, esse nemo velit id, cupiditate excepturi corporis animi odit incidunt quam reiciendis sint sapiente aspernatur quia dolorum. */}

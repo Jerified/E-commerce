@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
-const FlashSales = ({allProducts}: any) => {
-  const allProduct = allProducts.products
+const FlashSales = ({product}: any) => {
+  // const allProduct = allProducts.products
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -36,40 +36,40 @@ const FlashSales = ({allProducts}: any) => {
             <p className="text-blue-500 font-medium">Today&apos;s</p>
         </div>
 
-        <div className="py-6 flex lg:gap-12 gap-6 items-center">
-            <h1 className="text-3xl font-semibold whitespace-nowrap">Flash Sales</h1>
-            <div className="flex gap-4 items-end">
+        <div className="py-6 flex lg:gap-12 gap-4 items-center min-w-[150px">
+            <h1 className="md:text-3xl text-xl font-semibold whitespace-nowrap text-end">Flash Sales</h1>
+            <div className="flex gap-2 items-end">
               <div className="">
                 <p className="text-xs font-medium">Days</p>
-                <span className='text-3xl font-semibold'>{formatTimeValue(days)}  </span>
+                <span className='md:text-3xl text-xl font-semibold'>{formatTimeValue(days)}  </span>
               </div>
-              <span className="text-blue-500 font-semibold text-3xl mt-[-3rem]">:</span>
+              <span className="text-blue-500 font-semibold md:text-3xl text-xl mt-[-3rem]">:</span>
               <div className="">
               <p className="text-xs font-medium">Hours</p>
-                <span className='text-3xl font-semibold'>{formatTimeValue(hours)} </span>
+                <span className=' md:text-3xl text-xl font-semibold'>{formatTimeValue(hours)} </span>
               </div>
-              <span className="text-blue-500 font-semibold text-3xl">:</span>
+              <span className="text-blue-500 font-semibold  md:text-3xl text-xl">:</span>
               <div className="text-xs font-medium">
-              <p className="">Minutes</p>
-                <span className='text-3xl font-semibold'>{formatTimeValue(minutes)}  </span>
+              <p className="">Min</p>
+                <span className=' md:text-3xl text-xl font-semibold'>{formatTimeValue(minutes)}  </span>
               </div>
-              <span className="text-blue-500 font-semibold text-3xl">:</span>
+              <span className="text-blue-500 font-semibold  md:text-3xl text-xl">:</span>
               <div className="text-xs font-medium">
-              <p className="">Seconds</p>
-                <span className='text-3xl font-semibold'>{formatTimeValue(seconds)} </span>
+              <p className="">Sec</p>
+                <span className=' md:text-3xl text-xl font-semibold'>{formatTimeValue(seconds)} </span>
               </div>
             </div>
 
         </div>
 
         {/* grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 */}
-<div className=" snap-x flex w-full overflow-x-scroll gap-4 w-[80%">
-  {allProduct.slice(5,14).map((product: any) => (
-    <div className="bg-white border w-[120vw h-[50vh] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " key={product.title}>
-      <a href="">
-          <Image width={500} height={500} className="p- rounded-t-lg h-48" src={product.thumbnail} alt="product image" />
+<div className=" snap- flex w-ful overflow-x-scroll space-x-8 scrollbar-hide">
+  {product.slice(5,14).map((product: any) => (
+    <div className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
+      <a href="" className='aspect-w- aspect-h-'>
+          <Image width={500} height={500} className="object-cove max-w-ful rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
       </a>
-      <div className="px-3 py-4">
+      <div className="px-3 py-2">
           <a href="#">
               <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">{product.title}</h5>
           </a>
@@ -100,7 +100,7 @@ const FlashSales = ({allProducts}: any) => {
     </div>
 ))}
 </div>
-<button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-3 hover:bg-blue-700">View All Products</button>
+<button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-5 hover:bg-blue-700">View All Products</button>
 
    
 

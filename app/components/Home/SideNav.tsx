@@ -1,4 +1,5 @@
 import { Product } from '@prisma/client'
+
 import React from 'react'
 
 type TProduct = {
