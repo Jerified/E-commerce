@@ -65,7 +65,7 @@ const FlashSales = ({product}: any) => {
         {/* grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 */}
 <div className=" snap- flex w-ful overflow-x-scroll space-x-8 scrollbar-hide">
   {product.slice(5,14).map((product: any) => (
-    <div className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
+    <Link className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
       <a href="" className='aspect-w- aspect-h-'>
           <Image width={500} height={500} className="object-cove max-w-ful rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
       </a>
@@ -97,7 +97,7 @@ const FlashSales = ({product}: any) => {
           </div>
       </div>
 
-    </div>
+    </Link>
 ))}
 </div>
 <button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-5 hover:bg-blue-700">View All Products</button>
