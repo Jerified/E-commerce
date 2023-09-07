@@ -1,6 +1,7 @@
 "use client"
 
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
 const FlashSales = ({product}: any) => {
@@ -65,7 +66,7 @@ const FlashSales = ({product}: any) => {
         {/* grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 */}
 <div className=" snap- flex w-ful overflow-x-scroll space-x-8 scrollbar-hide">
   {product.slice(5,14).map((product: any) => (
-    <Link className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
+    <Link href={'/product'} className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
       <a href="" className='aspect-w- aspect-h-'>
           <Image width={500} height={500} className="object-cove max-w-ful rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
       </a>
