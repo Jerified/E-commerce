@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import PriceTag from '../PriceTag';
 
 const FlashSales = ({product}: any) => {
   // const allProduct = allProducts.products
@@ -66,9 +67,9 @@ const FlashSales = ({product}: any) => {
         {/* grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 */}
 <div className=" snap- flex w-ful overflow-x-scroll space-x-8 scrollbar-hide">
   {product.slice(5,14).map((product: any) => (
-    <Link href={'/product'} className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
+    <Link href={'/products/' + product.id} className="bg-whit border lg:w-fit sm:w-[30%]  h-[20rm] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
       <a href="" className='aspect-w- aspect-h-'>
-          <Image width={500} height={500} className="object-cove max-w-ful rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
+          <Image width={500} height={500} className="object-cove max-w-ful rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image"  />
       </a>
       <div className="px-3 py-2">
           <a href="#">
@@ -93,8 +94,8 @@ const FlashSales = ({product}: any) => {
               <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
           </div>
           <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">$599</span>
-              <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+              <PriceTag className='text-2xl font-bold text-gray-900 dark:text-white' price={product.price} />
+              <Link href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
           </div>
       </div>
 
