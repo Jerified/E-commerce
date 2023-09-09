@@ -17,7 +17,7 @@ const Banner = ({ product }: any) => {
     setCurrentIndex(slideIndex)
   }
   return (
-    <section className="lg:w-[80%] p-6 w-full">
+    <section className="lg:w-[80%] p-6 lg:pr-0 w-full">
       <div className="bg-[#8EC1D6] rounded text-white">
         <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[26rem] lg:py-8 md:flex-row md:items-center ">
           <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">

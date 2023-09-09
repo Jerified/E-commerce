@@ -36,6 +36,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/bcrypt": "^5.0.0",
     "@types/validator": "^13.11.1",
+    "daisyui": "^3.7.3",
     "prisma": "^5.2.0"
   }
 }

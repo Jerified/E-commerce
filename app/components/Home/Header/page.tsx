@@ -3,8 +3,11 @@ import Logo from '../../../../public/Logo.svg'
 import Search from '../Search/page'
 import { PiShoppingCartLight } from "react-icons/pi"
 import Link from 'next/link'
+import ShoppingCartButton from './ShoppingCartButton'
+import { getCart } from '@/lib/cart'
 
-const Header = () => {
+const Header = async  () => {
+  const cart = await getCart();
   return (
     <header className='max-w-6xl mx-auto px-5 lg:px-0'>
       <div className="flex justify-between py-7 items-center ">
@@ -21,7 +24,8 @@ const Header = () => {
 
         <div className="gap-16 items-center hidden lg:flex">
           <Search />
-          <PiShoppingCartLight classNameName="text-3xl" />
+          <ShoppingCartButton cart={cart} />
+          {/* <PiShoppingCartLight className="text-2xl" /> */}
         </div>
 
 

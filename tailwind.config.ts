@@ -8,13 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide'), require( '@tailwindcss/aspect-ratio')],
+  plugins: [require('tailwind-scrollbar-hide'), require( '@tailwindcss/aspect-ratio'), require('daisyui')],
 }
 export default config
