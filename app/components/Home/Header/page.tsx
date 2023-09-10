@@ -12,7 +12,7 @@ const Header = async  () => {
     <header className='max-w-6xl mx-auto px-5 lg:px-0'>
       <div className="flex justify-between py-7 items-center ">
         {/* <img src={Logo} alt='logo' /> */}
-        <h1 className="text-2xl font-semibold">Exclusive</h1>
+        <Link href={'/'} className="text-2xl font-semibold cursor-pointer">Exclusive</Link>
         <ul className='lg:flex gap-4 hidden m '>
           <li>Home</li>
           <li>Contact</li>

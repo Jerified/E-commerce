@@ -15,7 +15,7 @@ import { AddProductData, AddProductSchema } from '@/lib/schema'
 import { addProduct } from '../action'
 
 export const metadata = {
-    title: "Add Product-Exclusive"
+    title: "Add Product - Exclusive"
 }
 
 const Product = () => {

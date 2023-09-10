@@ -44,8 +44,8 @@ export default function CartEntry({
                         <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
                             <div className="pr-8 sm:pr-5">
                                 <Link href={"/products/" + product.id} className="text-base font-semibold text-gray-900">
-                        {product.title}
-                    </Link>
+                                    {product.title}
+                                </Link>
                             </div>
 
                             <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
@@ -71,7 +71,7 @@ export default function CartEntry({
                     </div>
                 </li>
             </ul>
-            <div className="flex flex-wrap items-center gap-3">
+            {/* <div className="flex flex-wrap items-center gap-3">
                 <Image
                     src={product.thumbnail}
                     alt={product.title}
@@ -107,7 +107,7 @@ export default function CartEntry({
                         )}
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="divider" />
         </div>
     );
