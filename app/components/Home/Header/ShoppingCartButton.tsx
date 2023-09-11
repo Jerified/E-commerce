@@ -3,6 +3,8 @@
 import { ShoppingCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/format";
 import Link from "next/link";
+import Image from "next/image";
+import PriceTag from "../../PriceTag";
 
 interface ShoppingCartButtonProps {
   cart: ShoppingCart | null;
@@ -41,12 +43,39 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
       </label>
       <div
         tabIndex={0}
-        className="card dropdown-content card-compact z-30 mt-3 w-52 bg-base-100 shadow"
+        className="card dropdown-content card-compact z-30 mt-3 w-96 rounded bg-base-100 shadow"
       >
         <div className="card-body">
+          <p className="text-center font-bold text-2xl pb-5">Your Cart</p>
+          <div className="divider" />
+          {cart?.items.map((cartItem) => (
+            <div className="flex justify-between items-center gap-4" key={cartItem.id}>
+              <div className="flex items-center gap-2 pb-2" >
+                <Image
+                  src={cartItem.product.thumbnail}
+                  alt={cartItem.product.title}
+                  width={200}
+                  height={200}
+                  className="h-16 w-16 max-w-full rounded object-cover"
+                />
+                <div className="">
+                  <p className="font-semibold">{cartItem.product.title}</p>
+                  <PriceTag className=' font-bold text-gray-900 dark:text-white' price={cartItem.product.price} />
+                </div>
+                
+              </div>
+              <p className="font-medium flex justify-end text-end">Quantity: {cartItem.quantity}</p>
+            </div>
+
+          ))}
+                <div className="divider" />
+
           <span className="text-lg font-bold">{cart?.size || 0} Items</span>
-          <span className="text-info">
-            Subtotal: {formatPrice(cart?.subtotal || 0)}
+          <span className="font-semibold flex justify-between">
+            Subtotal:
+            <span className="">
+              {formatPrice(cart?.subtotal || 0)}
+            </span>
           </span>
           <div className="card-actions">
             <Link
