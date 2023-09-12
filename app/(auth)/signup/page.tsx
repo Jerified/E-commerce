@@ -28,27 +28,28 @@ const Signup = () => {
 
   const onSubmit: SubmitHandler<signUpData> = async (data) => {
     console.log(data)
-    // const response = await fetch('/api/user', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     username: data.username,
-    //     email: data.email,
-    //     password: data.password
-    //   })
+    const response = await fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password
+      })
 
-    // })
+    })
 
-    // if (response.ok) {
-    //   router.push('/signin')
-    // } else {
-    //   console.error('Registration failed')
+    if (response.ok) {
+      router.push('/signin')
+    } else {
+      console.error('Registration failed')
     // }
     // console.log(data);
     // console.log(response)
 
+  }
   }
 
   return (

@@ -28,15 +28,20 @@ const Signin = () => {
 
     const onSubmit:SubmitHandler<signInData>  = async (data) => {
       console.log(data)
-      const signInData = await signIn('credentials', {
-       ...data,
-        redirect: true,
-        callbackUrl: '/'
-      })
-      .then((callback) => {
-        console.log(callback?.error)
-      })
-      console.log(signInData)
+      try {
+        const signInData = await signIn('credentials', {
+          ...data,
+           redirect: true,
+           callbackUrl: '/'
+         })
+         .then((callback) => {
+           console.log(callback?.error)
+         })
+         console.log(signInData)
+      } catch (error) {
+        console.log(error)
+      }
+      
 
       // if(signInData?.error) {
       //   console.log(signInData?.error)
@@ -45,10 +50,10 @@ const Signin = () => {
       // }
     }    
   return (
-    <form action="" className=' flex justify-center h-screen items-center ' onSubmit={handleSubmit(onSubmit)}>
+    <form className=' flex justify-center h-screen items-center ' onSubmit={handleSubmit(onSubmit)}>
     <div className="bg-white rounded-md w-[80%] md:w-[60%] lg:w-[40%] text-center flex flex-col py-6 gap-7">
       <h1 className='text-2xl font-semibold ' >Welcome</h1>
-      <input type="email"  id="" className='input ' placeholder='Enter Your Email'  {...register('email')}/>
+      <input type="email"  id="" className='input justify-center' placeholder='Enter Your Email'  {...register('email')}/>
       {errors?.email && (
           <span className="error">{errors.email?.message}</span>
         )}

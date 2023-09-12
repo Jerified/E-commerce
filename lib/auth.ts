@@ -7,6 +7,7 @@ import { compare } from "bcrypt";
 import { Adapter } from "next-auth/adapters";
 import { env } from "./schema";
 import { PrismaClient } from "@prisma/client";
+import { mergeAnonymousCartIntoUserCart } from "./cart";
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -64,27 +65,30 @@ export const authOptions: NextAuthOptions = {
       if(user) {
          return {
             ...token,
-            username: user.username
+            username: user.username,
+            id: user.id
          }
       }
       // console.log(token, user, account, profile, isNewUser)
       return token
    },
-   async session ({session, token}) {
+   async session ({session, token, user}) {
+      console.log(session)
       return {
          ...session,
          user: {
             ...session.user,
-            username: token.username
+            id: token.id,
+            username: token.username 
          }
       }
-      return session
-      // console.log(session, user);
-     
-      
    }
-
-  }
+  },
+  events: {
+   async signIn({ user }) {
+     await mergeAnonymousCartIntoUserCart(user.id);
+   },
+ },
 }
 
 export default NextAuth(authOptions)
