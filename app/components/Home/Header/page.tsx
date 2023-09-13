@@ -14,7 +14,7 @@ const Header = async  () => {
         {/* <img src={Logo} alt='logo' /> */}
         <Link href={'/'} className="text-2xl font-semibold cursor-pointer">Exclusive</Link>
         <ul className='lg:flex gap-4 hidden m '>
-          <li>Home</li>
+          <li className='border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 cursor-pointer'>Home</li>
           <li>Contact</li>
           <li>About</li>
           <Link href={'/signin'}>

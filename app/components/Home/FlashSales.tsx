@@ -73,7 +73,7 @@ const FlashSales = ({product}: any) => {
     </Link>
 ))}
 </div>
-<button className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-5 hover:bg-blue-700">View All Products</button>
+<Link href={'/products'}  className="bg-blue-500 rounded text-white px-9 py-3 flex justify-center mx-auto my-5 hover:bg-blue-700">View All Products</Link>
 
    
 

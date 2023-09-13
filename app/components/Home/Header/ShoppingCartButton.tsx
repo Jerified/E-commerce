@@ -43,10 +43,10 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
       </label>
       <div
         tabIndex={0}
-        className="card dropdown-content card-compact z-30 mt-3 w-96 rounded bg-base-100 shadow"
+        className="card dropdown-content card-compact z-30 mt-3 w-[40vw] rounded bg-base-100 shadow"
       >
         <div className="card-body">
-          <p className="text-center font-bold text-2xl pb-5">Your Cart</p>
+          <p className="text-center font-bold text-2xl">Your Cart</p>
           <div className="divider" />
           {cart?.items.map((cartItem) => (
             <div className="flex justify-between items-center gap-4" key={cartItem.id}>
