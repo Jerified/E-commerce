@@ -28,10 +28,9 @@ const page = async () => {
                 </div>
 
                 {!cart?.items.length && <p className='text-3xl font-semibold text-center'>Your cart is empty.</p>}
-
                 <Table>
                     {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
-                    {cart?.items && <TableHeader>
+                    {cart?.items.length !== 0 && (<TableHeader>
                         <TableRow>
                             <TableHead className="">PRODUCTS</TableHead>
                             <TableHead>QUANTITY</TableHead>
@@ -39,7 +38,7 @@ const page = async () => {
                             <TableHead className="text-right">PRICE</TableHead>
                             <TableHead className="text-right">TOTAL</TableHead>
                         </TableRow>
-                    </TableHeader>}
+                    </TableHeader>)}
                     <TableBody>
                         
                             {cart?.items.map((cartItem) => (
@@ -55,7 +54,6 @@ const page = async () => {
 
             </div>
         </section>
-
     )
 }
 

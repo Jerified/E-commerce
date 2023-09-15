@@ -73,9 +73,9 @@ export default function CartEntry({
           </div>
             </TableCell>
             <TableCell className="text-red-500 underline-offset-1 cursor-pointer" onClick={() => {
-                // startTransition(async () => {
-                //     await removeProductFromCart(product.id);
-                //   });
+                 startTransition(async () => {
+                    await setProductQuantity(product.id,0);
+                  });
             }}>Remove</TableCell>
             <TableCell className="text-right">
                 <PriceTag className=' font-bold text-gray-900 dark:text-white' price={product.price} />

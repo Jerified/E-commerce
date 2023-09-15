@@ -43,7 +43,7 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
       </label>
       <div
         tabIndex={0}
-        className="card dropdown-content card-compact z-30 mt-3 w-[40vw] rounded bg-base-100 shadow"
+        className="card dropdown-content card-compact z-30 mt-3 w-[40vw] md:w-[25vw] rounded bg-base-100 shadow"
       >
         <div className="card-body">
           <p className="text-center font-bold text-2xl">Your Cart</p>
