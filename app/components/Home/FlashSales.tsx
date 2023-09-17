@@ -65,7 +65,7 @@ const FlashSales = ({ product }: any) => {
       </div>
 
       {/* grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 */}
-      <div className=" snap- flex w-ful overflow-x-scroll space-x- scrollbar-hide">
+      <div className=" flex overflow-x-scroll scrollbar-hide">
         {product.slice(5, 14).map((product: any) => (
           <Link href={'/products/' + product.id} className=" flex-none cursor-pointer hover:scale-105 hover:duration-150 hover:transition-all" key={product.title}>
             <ProductCard product={product} />

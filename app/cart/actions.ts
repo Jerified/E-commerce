@@ -4,23 +4,6 @@ import { createCart, getCart } from "@/lib/cart";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function removeProductFromCart(productId:string){
-  const cart = (await getCart()) ?? (await createCart());
-  if (cart) {
-    await prisma.cart.delete({
-      where: {
-        id: cart.id,
-        items: {
-          some: {
-            productId
-          }
-        }
-      }
-    })
-  }
-
-}
-
 export async function setProductQuantity(productId: string, quantity: number) {
   const cart = (await getCart()) ?? (await createCart());
 

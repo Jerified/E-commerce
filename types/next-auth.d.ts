@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth"
 
 declare module "next-auth" {
@@ -12,22 +13,23 @@ declare module "next-auth" {
         id: string
       }
       token: {
-        username: string
+        username: string,
+        id: string
       }
     }
   }
 }
 
-// import { DefaultSession } from "next-auth";
+  // import { DefaultSession } from "next-auth";
 
-// declare module "next-auth" {
-//   interface Session {
-//     token: {
-//       username: string
-//     }
-//     user: {
-//       username: string,
-//       id: string;
-//     } & DefaultSession["user"];
-//   }
-// }
+  // declare module "next-auth" {
+  //   interface Session {
+  //     token: {
+  //       username: string
+  //     }
+  //     user: {
+  //       username: string,
+  //       id: string;
+  //     } & DefaultSession["user"];
+  //   }
+  // }
