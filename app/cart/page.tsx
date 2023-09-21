@@ -1,7 +1,7 @@
 import { getCart } from '@/lib/cart';
 import React from 'react'
 import CartEntry from './CartEntry';
-import { removeProductFromCart, setProductQuantity } from './actions';
+import { setProductQuantity } from './actions';
 import {
     Table,
     TableBody,
@@ -20,6 +20,7 @@ export const metadata = {
 const page = async () => {
 
     const cart = await getCart();
+    console.log(cart);
     return (
         <section className=" py-12 sm:py-16 lg:py-20">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +47,6 @@ const page = async () => {
                                     cartItem={cartItem}
                                     key={cartItem.id}
                                     setProductQuantity={setProductQuantity}
-                                    removeProductFromCart={removeProductFromCart}
                                 />
                             ))}
                     </TableBody>

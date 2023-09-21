@@ -5,6 +5,7 @@ import { formatPrice } from "@/lib/format";
 import Link from "next/link";
 import Image from "next/image";
 import PriceTag from "../../PriceTag";
+import { experimental_useOptimistic as useOptimistic, useTransition } from "react";
 
 interface ShoppingCartButtonProps {
   cart: ShoppingCart | null;

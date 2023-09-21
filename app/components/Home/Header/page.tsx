@@ -8,6 +8,8 @@ import { getCart } from '@/lib/cart'
 
 const Header = async  () => {
   const cart = await getCart();
+  console.log(cart);
+  
   return (
     <header className='max-w-6xl mx-auto px-5 lg:px-0'>
       <div className="flex justify-between py-7 items-center ">

@@ -20,16 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='bg-[#D6DEE7]'>
-      <body className={` ${inter.className}`} >
-        <div className="border-b border-gray-400">
+      <body className={` ${inter.className} h-screen`} >
+        <div className="border-b border-gray-400 ">
           <Header />
-          
+
         </div>
         <main className="lg:max-w-6xl md:mx-w-4xl mx-auto">
           {children}
         </main>
         <Footer />
-        </body>
+      </body>
     </html>
   )
 }

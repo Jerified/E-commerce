@@ -4,7 +4,7 @@ import { CartItemWithProduct } from "@/lib/cart";
 import { formatPrice } from "@/lib/format";
 import Image from "next/image";
 import Link from "next/link";
-import { useTransition } from "react";
+import { experimental_useOptimistic as useOptimistic, useTransition } from "react";
 import {
     Table,
     TableBody,
@@ -15,20 +15,21 @@ import {
     TableRow,
 } from "@/app/components/ui/table"
 import PriceTag from "../components/PriceTag";
-import { removeProductFromCart } from "./actions";
 
 interface CartEntryProps {
     cartItem: CartItemWithProduct;
     setProductQuantity: (productId: string, quantity: number) => Promise<void>;
-    removeProductFromCart: (productId: string) => Promise<void>;
 }
 
 export default function CartEntry({
     cartItem: { product, quantity },
     setProductQuantity,
-    removeProductFromCart
 }: CartEntryProps) {
     const [isPending, startTransition] = useTransition();
+    const [optimisticQuantity, setOptimisticQuantity] = useOptimistic(
+        quantity || 0,
+        (state, amount) => state + Number(amount)
+    )
 
     const quantityOptions: JSX.Element[] = [];
     for (let i = 1; i <= 99; i++) {
@@ -62,6 +63,7 @@ export default function CartEntry({
               onChange={(e) => {
                 const newQuantity = parseInt(e.currentTarget.value);
                 startTransition(async () => {
+                  setOptimisticQuantity(newQuantity - quantity)
                   await setProductQuantity(product.id, newQuantity);
                 });
               }}
@@ -74,6 +76,7 @@ export default function CartEntry({
             </TableCell>
             <TableCell className="text-red-500 underline-offset-1 cursor-pointer" onClick={() => {
                  startTransition(async () => {
+                    setOptimisticQuantity(-quantity)
                     await setProductQuantity(product.id,0);
                   });
             }}>Remove</TableCell>

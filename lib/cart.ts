@@ -25,7 +25,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
 
   if (session) {
     cart = await prisma.cart.findFirst({
-       where: { userId: session.user. },
+       where: { userId: session.user.user.id },
       include: { items: { include: { product: true } } },
     });
   } else {
