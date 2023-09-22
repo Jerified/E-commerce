@@ -9,26 +9,31 @@ import { incrementProductQuantity } from '../products/action'
 const ProductCard = ({ product }: any) => {
   const [isPending, startTransition] = useTransition();
 
+  const percentageOff = (originalPrice: number, discountedPrice) => {
+
+
+  }
+
   const addToCart = (productId: string) => {
     startTransition(async () => {
       await incrementProductQuantity(productId);
     });
   }
   return (
-    <div className="relative my-10 mx-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+    <div className="relative my-4 mx-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
       <a className="relative flex h-60 overflow-hidden rounded-xl" href="#">
         <Image width={500} height={500} className=" rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
         <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span>
       </a>
-      <div className="mt-2 px-5 pb-5">
+      <div className=" px-3 pb-5">
         <a href="#">
           <h5 className="text-xl tracking-tight text-slate-900">{product.title}</h5>
         </a>
         <div className="mt-2 mb-5 flex items-center justify-between">
           <p>
-            <PriceTag className='text-2xl font-bold text-gray-900 dark:text-white' price={product.price} />
+            <PriceTag className={`text-xl font-bold text-gray-900 dark:text-white`} price={product.price} />
             {/* <span className="text-3xl font-bold text-slate-900" price={product.price}>$449</span> */}
-            <span className="text-sm text-slate-900 line-through">$699</span>
+            <span className="text-sm text-slate-900 line-through">{product.discountedPrice + product.price}</span>
           </p>
           <div className="flex items-center">
             <Rating value={product.rating} />

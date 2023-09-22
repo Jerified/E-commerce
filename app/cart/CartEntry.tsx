@@ -69,7 +69,7 @@ export default function CartEntry({
               }}
             >
               
-              {quantityOptions}
+              {optimisticQuantity}
             </select>
             {isPending && <span className="loading loading-spinner loading-md" />}
           </div>

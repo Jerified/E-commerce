@@ -1,9 +1,20 @@
+import { prisma } from '@/lib/prisma'
 import React from 'react'
+import ProductCard from '../components/ProductCard'
 
-const ProductPage = () => {
+const ProductPage = async() => {
+    const products = await prisma.product.findMany({
+        orderBy: {createdAt: "desc"}
+      })
   return (
-    <section className="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
-    <section
+    <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-6 lg:px-0 ">
+        {products.map((product: any) => (
+            <React.Fragment key={product.id}>
+                <ProductCard product={product}  />
+            </React.Fragment>
+        ))}
+        
+    {/* <section
         className="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start ">
         <section className="p-5 py-10 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
             <img src="https://www.dropbox.com/s/mlor33hzk73rh0c/x14423.png?dl=1" alt="" />
@@ -164,7 +175,7 @@ const ProductPage = () => {
             <h2 className="font-semibold mb-5">$34.99</h2>
             <button className="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add To Cart</button>
         </section>
-    </section>
+    </section> */}
 </section>
   )
 }

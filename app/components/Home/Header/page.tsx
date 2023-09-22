@@ -1,10 +1,14 @@
 import React from 'react'
 import Logo from '../../../../public/Logo.svg'
-import Search from '../Search/page'
+// import search from '../Search'
 import { PiShoppingCartLight } from "react-icons/pi"
 import Link from 'next/link'
 import ShoppingCartButton from './ShoppingCartButton'
 import { getCart } from '@/lib/cart'
+import { redirect } from 'next/navigation'
+import Search from '../Search'
+// import Search from '../search'
+
 
 const Header = async  () => {
   const cart = await getCart();
