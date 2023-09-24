@@ -21,7 +21,7 @@ export default async function Home() {
   // const products = new Set(Product)
   // const product = Array.from
 
-  // console.log(products);
+  // console.log(product);
   
 
   // const womenProducts = ["womens-dresses", "womens-shoes", "womens-watches", "womens-bag", "womens-jewellery", "womens-bags"]

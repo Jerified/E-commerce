@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='bg-[#D6DEE7]'>
+    <html lang="en" className=''>
       <body className={` ${inter.className} h-screen`} >
         <div className="border-b border-gray-400 ">
           <Header />
