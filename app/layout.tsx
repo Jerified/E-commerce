@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Header from './components/Home/Header/page'
-import Footer from './components/Home/Footer/page'
+import Navbar from './components/Navbar'
 
 
 
@@ -19,16 +18,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='bg-[#D6DEE7]'>
-      <body className={` ${inter.className} h-screen`} >
-        <div className="border-b border-gray-400 ">
-          <Header />
-
-        </div>
+    <html lang="en" className=''>
+      <body className={` ${inter.className} bg-orange-500`} >
         <main className="lg:max-w-6xl md:mx-w-4xl mx-auto">
+          <Navbar />
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   )
