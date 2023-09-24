@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Header from './components/Home/Header/page'
-import Footer from './components/Home/Footer/page'
+import Navbar from './components/Navbar'
 
 
 
@@ -20,15 +19,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className=''>
+<<<<<<< HEAD
       <body className={` ${inter.className} h-screen`} >
         <div className="border-b border-gray-400 ">
           <Header />
 
         </div>
+=======
+      <body className={` ${inter.className} bg-orange-500`} >
+>>>>>>> 1b3904ac2037c7a5560c1f07a3c08fc563d09932
         <main className="lg:max-w-6xl md:mx-w-4xl mx-auto">
+          <Navbar />
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   )
