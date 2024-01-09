@@ -5,14 +5,18 @@ import React, { useTransition } from 'react'
 import PriceTag from './PriceTag'
 import Rating from './Rating'
 import { incrementProductQuantity } from '../products/action'
+import Link from 'next/link'
 
 const ProductCard = ({ product }: any) => {
   const [isPending, startTransition] = useTransition();
 
-  const percentageOff = (originalPrice: number, discountedPrice) => {
+  const percentageOff = (originalPrice: number, discountedPrice: number) => {
+    return (( originalPrice - discountedPrice ) / originalPrice * 100).toFixed(0)
 
 
   }
+  console.log(product.discountPercentage);
+  
 
   const addToCart = (productId: string) => {
     startTransition(async () => {
@@ -20,20 +24,20 @@ const ProductCard = ({ product }: any) => {
     });
   }
   return (
-    <div className="relative my-4 mx-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+    <Link href={`products/${product.id}`} className="relative my-4 mx-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
       <a className="relative flex h-60 overflow-hidden rounded-xl" href="#">
         <Image width={500} height={500} className=" rounded-t-lg h-[30vh]" src={product.thumbnail} alt="product image" />
-        <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span>
+        <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">{percentageOff(product.price, product.discountPercentage)}% OFF</span>
       </a>
-      <div className=" px-3 pb-5">
-        <a href="#">
+      <div className=" px-3 pb-5 ">
           <h5 className="text-xl tracking-tight text-slate-900">{product.title}</h5>
-        </a>
-        <div className="mt-2 mb-5 flex items-center justify-between">
+        <div className="mt-2 mb-5 flex items-center justify-between flex-wrap">
           <p>
             <PriceTag className={`text-xl font-bold text-gray-900 dark:text-white`} price={product.price} />
             {/* <span className="text-3xl font-bold text-slate-900" price={product.price}>$449</span> */}
-            <span className="text-sm text-slate-900 line-through">{product.discountedPrice + product.price}</span>
+            <span className="text-sm text-slate-900 line-through">
+              <PriceTag className='' price={product.discountPercentage} />
+            </span>
           </p>
           <div className="flex items-center">
             <Rating value={product.rating} />
@@ -47,7 +51,7 @@ const ProductCard = ({ product }: any) => {
           Add to cart
         </button>
       </div>
-    </div>
+    </Link>
 
   )
 }

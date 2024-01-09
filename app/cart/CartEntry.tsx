@@ -15,7 +15,6 @@ import {
     TableRow,
 } from "@/app/components/ui/table"
 import PriceTag from "../components/PriceTag";
-
 interface CartEntryProps {
     cartItem: CartItemWithProduct;
     setProductQuantity: (productId: string, quantity: number) => Promise<void>;
