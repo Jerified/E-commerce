@@ -9,87 +9,93 @@ import { env } from "./schema";
 import { PrismaClient } from "@prisma/client";
 import { mergeAnonymousCartIntoUserCart } from "./cart";
 
+/**
+ * NextAuth options for authentication in the application.
+ * Configures authentication providers, session handling,
+ * callbacks for customizing tokens/sessions, and signIn events.
+ */
 export const authOptions: NextAuthOptions = {
-    adapter: PrismaAdapter(prisma),
-    secret: process.env.NEXTAUTH_SECRET,
-    session: {
-        strategy: 'jwt'
-    },
-    pages: {
-        signIn: '/signin'
-    },
+  adapter: PrismaAdapter(prisma),
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/signin",
+  },
   providers: [
-   GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-      clientSecret:process.env.GOOGLE_CLIENT_SECRET ?? ''
-   }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+    }),
     CredentialsProvider({
-  
       name: "Credentials",
-    
+
       credentials: {
         email: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-         if(!credentials?.email || !credentials.password) {
-            throw new Error('Please enter an email and password')
-         }
+        if (!credentials?.email || !credentials.password) {
+          throw new Error("Please enter an email and password");
+        }
 
-         const existingUser = await prisma.user.findUnique({
-            where: { email: credentials?.email}
-         })
+        const existingUser = await prisma.user.findUnique({
+          where: { email: credentials?.email },
+        });
 
-         if (!existingUser || !existingUser.password) {
-            throw new Error ('No user found')
-         }
+        if (!existingUser || !existingUser.password) {
+          throw new Error("No user found");
+        }
 
-         const passwordMatch = await compare(credentials.password, existingUser.password)
+        const passwordMatch = await compare(
+          credentials.password,
+          existingUser.password
+        );
 
-         if (!passwordMatch) {
-            throw new Error('Incorrect password')
-         }
+        if (!passwordMatch) {
+          throw new Error("Incorrect password");
+        }
 
-         return {
-            id: `${existingUser.id}`,
-            username: existingUser.username,
-            email: existingUser.email
-         }
-  
-      }
-    })
+        return {
+          id: `${existingUser.id}`,
+          username: existingUser.username,
+          email: existingUser.email,
+        };
+      },
+    }),
   ],
 
   callbacks: {
-   async jwt ({token, user, session}) {
-      if(user) {
-         // token.username = 
-         
-         return {
-            ...token,
-            username: user.username,
-            id: user.id
-         }
+    async jwt({ token, user, session }) {
+      if (user) {
+        // token.username =
+
+        return {
+          ...token,
+          username: user.username,
+          id: user.id,
+        };
       }
       // console.log(token, user, account, profile, isNewUser)
-      return token
-   },
-   async session ({session, token, user}) {
-      session.user.token.id = user.id
+      return token;
+    },
+    async session({ session, token, user }) {
+    //   session.user.token.id = user.id;
       return {
-         ...session,
-         user: {
-            ...session.user,
-            username: token.username 
-         }
-      }
-   }
+        ...session,
+        user: {
+          ...session.user,
+          username: token.username,
+        },
+      };
+    },
   },
   events: {
-   async signIn({ user }) {
-     await mergeAnonymousCartIntoUserCart(user.id);
-   },
- },
-}
+    async signIn({ user }) {
+      await mergeAnonymousCartIntoUserCart(user.id);
+    },
+  },
+};
 
 export default NextAuth(authOptions)

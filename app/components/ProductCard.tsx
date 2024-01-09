@@ -5,11 +5,12 @@ import React, { useTransition } from 'react'
 import PriceTag from './PriceTag'
 import Rating from './Rating'
 import { incrementProductQuantity } from '../products/action'
+// import { incrementProductQuantity } from '../products/action'
 
 const ProductCard = ({ product }: any) => {
   const [isPending, startTransition] = useTransition();
 
-  const percentageOff = (originalPrice: number, discountedPrice) => {
+  const percentageOff = (originalPrice: number, discountedPrice: number) => {
 
 
   }

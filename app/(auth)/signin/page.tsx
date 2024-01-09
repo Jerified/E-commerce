@@ -50,14 +50,14 @@ const Signin = () => {
       // }
     }    
   return (
-    <form className=' flex justify-center h-screen items-center ' onSubmit={handleSubmit(onSubmit)}>
-    <div className="bg-white rounded-md w-[80%] md:w-[60%] lg:w-[40%] text-center flex flex-col py-6 gap-7">
+    <form className=' flex justify-center h-screen items-center' onSubmit={handleSubmit(onSubmit)}>
+    <div className="bg-white rounded-md w-[80%] md:w-[60%] lg:w-[30%] text-center flex flex-col py-6 gap-7">
       <h1 className='text-2xl font-semibold ' >Welcome</h1>
       <input type="email"  id="" className='input justify-center' placeholder='Enter Your Email'  {...register('email')}/>
       {errors?.email && (
           <span className="error">{errors.email?.message}</span>
         )}
-      <div className="relative  w-[80%]  lg:w-[70%] mx-auto">
+      <div className="relative w-full">
         <input type={showPassword ? 'text' : 'password'} id="" className='input relativ w-full mx-auto' placeholder='Enter Your Password'  {...register('password')}/>
         <button type="button" className=' absolute top-3 right-4 ' onClick={handleClickPassword}>
           {showPassword ?
@@ -68,19 +68,19 @@ const Signin = () => {
           <span className="error">{errors.password?.message}</span>
         )}
       </div>
-      <button type='submit' className="bg-[#94A3B8] w-[80%] lg:w-[70%] mx-auto h-12 rounded-md hover:bg-[#8599B6] transition duration-150 text-white">
+      <button type='submit' className="bg-[#94A3B8] w-full mx-auto h-12 rounded-md hover:bg-[#8599B6] transition duration-150 text-white">
         Login
       </button>
-      <div className="mx-auto py-0 flex w-[80%] lg:w-[70%] items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400 font-semibold">Or</div>
-      <button className="bg-[#3D4B5F] w-[80%] lg:w-[70%] mx-auto h-12 rounded-md hover:bg-[#263141] transition duration-150 text-white flex justify-evenl items-center px-3 " type='button'>
+      <div className="mx-auto py-0 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400 font-semibold">Or</div>
+      <button className="bg-[#3D4B5F] w-full mx-auto h-12 rounded-md hover:bg-[#263141] transition duration-150 text-white flex items-center justify-center px-3 gap-2 border-0" type='button'>
         <BiLogoFacebook className='text-2xl' />
-        <div className=" mx-auto">
+        <div className="">
         Signup with Facebook
         </div>
       </button>
-      <button className=" w-[80%] lg:w-[70%] mx-auto h-12 rounded-md  transition duration-150 border border-[#1E293B] hover:bg-[#F2F2F2] flex justify-evenl items-center px-3 " type='button' onClick={() => signIn("google")}>
+      <button className=" bg-[#3D4B5F] w-full mx-auto h-12 rounded-md hover:bg-[#263141] transition duration-150 text-white flex items-center justify-center px-3 gap-2 border-0" type='button' onClick={() => signIn("google")}>
         <FcGoogle className='text-2xl' />
-        <div className=" mx-auto">
+        <div className="">
         Signup with Google
         </div>
       </button>

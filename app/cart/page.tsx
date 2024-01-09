@@ -1,7 +1,7 @@
 import { getCart } from '@/lib/cart';
 import React from 'react'
 import CartEntry from './CartEntry';
-import { setProductQuantity } from './actions';
+// import { setProductQuantity } from './actions';
 import {
     Table,
     TableBody,
@@ -11,6 +11,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/app/components/ui/table"
+import { setProductQuantity } from './actions';
 
 
 export const metadata = {
