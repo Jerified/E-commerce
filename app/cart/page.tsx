@@ -11,7 +11,8 @@ import {
     TableHeader,
     TableRow,
 } from "@/app/components/ui/table"
-import { setProductQuantity } from './actions';
+import { setProductQuantity } from './action';
+// import { setProductQuantity } from './actions';
 
 
 export const metadata = {
