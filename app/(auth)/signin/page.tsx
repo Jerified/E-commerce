@@ -11,8 +11,9 @@ import * as z from 'zod'
 import { signInData, signInSchema } from '@/lib/schema'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import LoginForm from '@/app/components/auth/LoginForm'
 
-const Signin = () => {
+export function Signin() {
 
     const [showPassword, setShowPassword] = useState(false)
    const router = useRouter()
@@ -91,4 +92,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+// export default Signin

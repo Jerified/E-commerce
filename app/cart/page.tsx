@@ -23,7 +23,7 @@ const page = async () => {
     const cart = await getCart();
     console.log(cart);
     return (
-        <section className=" py-12 sm:py-16 lg:py-20">
+        <section className=" py-12 sm:py-16 lg:py-10">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-center pb-12">
                     <h1 className="text-2xl font-semibold text-gray-900">Your Cart</h1>

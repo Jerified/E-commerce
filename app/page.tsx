@@ -1,16 +1,4 @@
-import { authOptions } from '@/lib/auth'
-import { getServerSession } from 'next-auth/next'
-import Header from './components/Home/Header/page'
-// import { Header } from "./components/Home/Header"
-import SideNav from "./components/Home/SideNav"
-import Banner from "./components/Home/Banner"
-// import FlashSales from './components/Home/FlashSales'
-import dynamic from 'next/dynamic'
-import Categorylist from './components/Home/Categorylist'
-import { prisma } from '@/lib/prisma'
 
-const FlashSales = dynamic(() => import('./components/Home/FlashSales'), {ssr: false})
-// import Signup from './(auth)/signup/page'
 
 export default async function Home() {
   const product = await prisma.product.findMany({

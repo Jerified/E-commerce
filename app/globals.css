@@ -66,11 +66,11 @@
   }
 }
  
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .point::after {
+    @apply content-[''] bg-black h-[1px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300
   }
-  body {
-    @apply bg-background text-foreground;
+  .point:hover::after{
+    @apply w-[100%]
   }
 }
